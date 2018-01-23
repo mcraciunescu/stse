@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>CouchDB Sensor Measurements</title>
+    </h:head>
+    <h:body>
+       <h:form>
+            <p:dataTable var="measurement" value="#{measurementsViewBean.measurements}" rows="10"
+                                 paginator="true"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 rowsPerPageTemplate="5,10,15">
+                <p:column headerText="Name">
+                    <h:outputText value="#{measurement.name}" />
+                </p:column>
+
+                <p:column headerText="Value">
+                    <h:outputText value="#{measurement.value}" />
+                </p:column>
+
+                <p:column headerText="Unit">
+                    <h:outputText value="#{measurement.unit}" />
+                </p:column>
+
+                <p:column headerText="Timestamp">
+                    <h:outputText value="#{measurement.timestamp}" />
+                </p:column>
+            </p:dataTable>
+        </h:form> 
+    </h:body>
+    
+    <br/>
+    
+    <p:chart type="line" model="#{measurementsViewBean.lineModel}" style="height:300px;"/>
+</html>
